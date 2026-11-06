@@ -1,0 +1,273 @@
+[gd_scene format=4 uid="uid://craeohm845fef"]
+
+[ext_resource type="Script" uid="uid://cb1mwm23txi2c" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="TileSet" uid="uid://cca6wf4o5ncmh" path="res://tiles.tres" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cljnh43kbjofl" path="res://UI.png" id="3_1bvp3"]
+[ext_resource type="FontFile" uid="uid://cu5cf7vr4fivc" path="res://pixel.ttf" id="4_1bvp3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4c57u"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_1bvp3"]
+offsets = PackedFloat32Array(0.7, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rccm3"]
+gradient = SubResource("Gradient_1bvp3")
+width = 6
+height = 6
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_lquwl"]
+colors = PackedColorArray(1, 0.90000004, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7mycd"]
+gradient = SubResource("Gradient_lquwl")
+
+[sub_resource type="Gradient" id="Gradient_7mycd"]
+offsets = PackedFloat32Array(0, 0.8774704)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_272bh"]
+gradient = SubResource("Gradient_7mycd")
+
+[sub_resource type="Curve" id="Curve_lquwl"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_levx4"]
+curve = SubResource("Curve_lquwl")
+
+[sub_resource type="Curve" id="Curve_272bh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5480769), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_efxa6"]
+curve = SubResource("Curve_272bh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n8266"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+damping_min = 1.0
+damping_max = 1.0
+damping_curve = SubResource("CurveTexture_levx4")
+attractor_interaction_enabled = false
+use_scale_3d = true
+scale_3d_min = Vector3(0.5, 1, 1)
+scale_3d_max = Vector3(1, 1.5, 1)
+scale_min = 0.5
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_efxa6")
+color_ramp = SubResource("GradientTexture1D_272bh")
+color_initial_ramp = SubResource("GradientTexture1D_7mycd")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8b3pp"]
+texture = ExtResource("3_1bvp3")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(22, 118, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rccm3"]
+atlas = ExtResource("3_1bvp3")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8b3pp"]
+atlas = ExtResource("3_1bvp3")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2yge"]
+atlas = ExtResource("3_1bvp3")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8266"]
+atlas = ExtResource("3_1bvp3")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_levx4"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(50, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 50.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 98, 0)
+
+[node name="Main" type="Node2D" unique_id=1733948583]
+script = ExtResource("1_0xm2m")
+
+[node name="Layers" type="Node2D" parent="." unique_id=964624984]
+position = Vector2(0, 14)
+
+[node name="Background" type="TileMapLayer" parent="Layers" unique_id=1227675277]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAAAAAAAAgABAAEAAAABAAEAAgABAAEAAAACAAAAAgABAAEAAAADAAEAAgABAAEAAAAEAAAAAgABAAEAAAAFAAEAAgABAAEAAAAGAAAAAgABAAEAAAAHAAEAAgABAAEAAAAIAAAAAgABAAEAAAAJAAEAAgABAAEAAAAAAAEAAgACAAEAAAABAAAAAgACAAEAAAACAAEAAgACAAEAAAADAAAAAgACAAEAAAAEAAEAAgACAAEAAAAFAAAAAgACAAEAAAAGAAEAAgACAAEAAAAHAAAAAgACAAEAAAAIAAEAAgACAAEAAAAJAAAAAgACAAEAAAAAAAIAAgABAAEAAAAAAAMAAgACAAEAAAABAAIAAgACAAEAAAABAAMAAgABAAEAAAACAAIAAgABAAEAAAACAAMAAgACAAEAAAADAAIAAgACAAEAAAADAAMAAgABAAEAAAAEAAIAAgABAAEAAAAEAAMAAgACAAEAAAAFAAIAAgACAAEAAAAFAAMAAgABAAEAAAAGAAIAAgABAAEAAAAGAAMAAgACAAEAAAAHAAIAAgACAAEAAAAHAAMAAgABAAEAAAAIAAIAAgABAAEAAAAIAAMAAgACAAEAAAAJAAIAAgACAAEAAAAJAAMAAgABAAEAAAAAAAQAAgABAAEAAAAAAAUAAgACAAEAAAABAAQAAgACAAEAAAABAAUAAgABAAEAAAACAAQAAgABAAEAAAACAAUAAgACAAEAAAADAAQAAgACAAEAAAADAAUAAgABAAEAAAAEAAQAAgABAAEAAAAEAAUAAgACAAEAAAAFAAQAAgACAAEAAAAFAAUAAgABAAEAAAAGAAQAAgABAAEAAAAGAAUAAgACAAEAAAAHAAQAAgACAAEAAAAHAAUAAgABAAEAAAAIAAQAAgABAAEAAAAIAAUAAgACAAEAAAAJAAQAAgACAAEAAAAJAAUAAgABAAEAAAAAAAYAAgABAAEAAAAAAAcAAgACAAEAAAABAAYAAgACAAEAAAABAAcAAgABAAEAAAACAAYAAgABAAEAAAACAAcAAgACAAEAAAADAAYAAgACAAEAAAADAAcAAgABAAEAAAAEAAYAAgABAAEAAAAEAAcAAgACAAEAAAAFAAYAAgACAAEAAAAFAAcAAgABAAEAAAAGAAYAAgABAAEAAAAGAAcAAgACAAEAAAAHAAYAAgACAAEAAAAHAAcAAgABAAEAAAAIAAYAAgABAAEAAAAIAAcAAgACAAEAAAAJAAYAAgACAAEAAAAJAAcAAgABAAEAAAAAAAgAAgABAAEAAAAAAAkAAgACAAEAAAABAAgAAgACAAEAAAABAAkAAgABAAEAAAACAAgAAgABAAEAAAACAAkAAgACAAEAAAADAAgAAgACAAEAAAADAAkAAgABAAEAAAAEAAgAAgABAAEAAAAEAAkAAgACAAEAAAAFAAgAAgACAAEAAAAFAAkAAgABAAEAAAAGAAgAAgABAAEAAAAGAAkAAgACAAEAAAAHAAgAAgACAAEAAAAHAAkAAgABAAEAAAAIAAgAAgABAAEAAAAIAAkAAgACAAEAAAAJAAgAAgACAAEAAAAJAAkAAgABAAEAAAAKAAAAAgABAAEAAAAKAAEAAgACAAEAAAAKAAIAAgABAAEAAAAKAAMAAgACAAEAAAAKAAQAAgABAAEAAAAKAAUAAgACAAEAAAAKAAYAAgABAAEAAAAKAAcAAgACAAEAAAAKAAgAAgABAAEAAAAKAAkAAgACAAEAAAALAAAAAgACAAEAAAALAAEAAgABAAEAAAALAAIAAgACAAEAAAALAAMAAgABAAEAAAALAAQAAgACAAEAAAALAAUAAgABAAEAAAALAAYAAgACAAEAAAALAAcAAgABAAEAAAALAAgAAgACAAEAAAALAAkAAgABAAEAAAAAAAoAAgABAAEAAAAAAAsAAgACAAEAAAABAAoAAgACAAEAAAABAAsAAgABAAEAAAACAAoAAgABAAEAAAACAAsAAgACAAEAAAADAAoAAgACAAEAAAADAAsAAgABAAEAAAAEAAoAAgABAAEAAAAEAAsAAgACAAEAAAAFAAoAAgACAAEAAAAFAAsAAgABAAEAAAAGAAoAAgABAAEAAAAGAAsAAgACAAEAAAAHAAoAAgACAAEAAAAHAAsAAgABAAEAAAAIAAoAAgABAAEAAAAIAAsAAgACAAEAAAAJAAoAAgACAAEAAAAJAAsAAgABAAEAAAAKAAoAAgABAAEAAAAKAAsAAgACAAEAAAALAAoAAgACAAEAAAALAAsAAgABAAEAAAA=")
+tile_set = ExtResource("2_h2yge")
+
+[node name="Field" type="TileMapLayer" parent="Layers" unique_id=1985533253]
+unique_name_in_owner = true
+tile_set = ExtResource("2_h2yge")
+
+[node name="Explosion" type="GPUParticles2D" parent="Layers/Field" unique_id=858449254]
+unique_name_in_owner = true
+z_index = 2
+material = SubResource("CanvasItemMaterial_4c57u")
+position = Vector2(41, 35)
+emitting = false
+amount = 42
+texture = SubResource("GradientTexture2D_rccm3")
+one_shot = true
+explosiveness = 1.0
+randomness = 0.15
+process_material = SubResource("ParticleProcessMaterial_n8266")
+
+[node name="Overlay" type="TileMapLayer" parent="Layers" unique_id=1443800057]
+unique_name_in_owner = true
+tile_set = ExtResource("2_h2yge")
+
+[node name="GUI" type="CanvasLayer" parent="." unique_id=291937416]
+
+[node name="PanelContainer" type="PanelContainer" parent="GUI" unique_id=1322650000]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 14.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8b3pp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/PanelContainer" unique_id=2125346908]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Container1" type="Control" parent="GUI/PanelContainer/HBoxContainer" unique_id=966912002]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/PanelContainer/HBoxContainer/Container1" unique_id=327140200]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+
+[node name="Time" type="TextureRect" parent="GUI/PanelContainer/HBoxContainer/Container1/HBoxContainer" unique_id=332875393]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = SubResource("AtlasTexture_rccm3")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="TimeLabel" type="Label" parent="GUI/PanelContainer/HBoxContainer/Container1/HBoxContainer" unique_id=860403335]
+unique_name_in_owner = true
+texture_filter = 1
+custom_maximum_size = Vector2(-1, 8)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(3, -1)
+offset_transform_scale = Vector2(1.275, 1.275)
+theme_override_fonts/font = ExtResource("4_1bvp3")
+theme_override_font_sizes/font_size = 4
+text = "000"
+vertical_alignment = 1
+
+[node name="Spacer1" type="Control" parent="GUI/PanelContainer/HBoxContainer" unique_id=1410716734]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Container2" type="Control" parent="GUI/PanelContainer/HBoxContainer" unique_id=579184091]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/PanelContainer/HBoxContainer/Container2" unique_id=1930183282]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Flag" type="TextureRect" parent="GUI/PanelContainer/HBoxContainer/Container2/HBoxContainer" unique_id=1227880064]
+layout_mode = 2
+texture = SubResource("AtlasTexture_8b3pp")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="FlagsLabel" type="Label" parent="GUI/PanelContainer/HBoxContainer/Container2/HBoxContainer" unique_id=835425908]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(12, 0)
+custom_maximum_size = Vector2(-1, 8)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(3, -1)
+offset_transform_scale = Vector2(1.275, 1.275)
+theme_override_fonts/font = ExtResource("4_1bvp3")
+theme_override_font_sizes/font_size = 4
+text = "00"
+vertical_alignment = 1
+
+[node name="Spacer2" type="Control" parent="GUI/PanelContainer/HBoxContainer" unique_id=1541230560]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Container3" type="Control" parent="GUI/PanelContainer/HBoxContainer" unique_id=1114684599]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/PanelContainer/HBoxContainer/Container3" unique_id=918857577]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Bomb" type="TextureRect" parent="GUI/PanelContainer/HBoxContainer/Container3/HBoxContainer" unique_id=517656687]
+layout_mode = 2
+texture = SubResource("AtlasTexture_h2yge")
+expand_mode = 2
+stretch_mode = 3
+
+[node name="BombsLabel" type="Label" parent="GUI/PanelContainer/HBoxContainer/Container3/HBoxContainer" unique_id=1228816999]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(12, 0)
+custom_maximum_size = Vector2(-1, 8)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(3, -1)
+offset_transform_scale = Vector2(1.275, 1.275)
+theme_override_fonts/font = ExtResource("4_1bvp3")
+theme_override_font_sizes/font_size = 4
+text = "00"
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=1924957706]
+unique_name_in_owner = true
+autostart = true
+
+[node name="Smileys" type="GPUParticles2D" parent="." unique_id=51472469]
+unique_name_in_owner = true
+position = Vector2(49, 117)
+emitting = false
+amount = 60
+texture = SubResource("AtlasTexture_n8266")
+lifetime = 10.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_levx4")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
